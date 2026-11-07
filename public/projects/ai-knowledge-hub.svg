@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" fill="none">
+  <style>
+    :root {
+      --palette-night: #080b14;
+      --palette-panel: #11182a;
+      --palette-text: #f2f5ff;
+      --palette-muted: #9da8c2;
+      --palette-cyan: #62e5f2;
+      --palette-violet: #b89cff;
+      --palette-line: #28314b;
+    }
+  </style>
+  <defs>
+    <linearGradient id="aiGlow" x1="140" y1="80" x2="790" y2="530" gradientUnits="userSpaceOnUse">
+      <stop stop-color="var(--palette-cyan)" stop-opacity=".2"/>
+      <stop offset="1" stop-color="var(--palette-violet)" stop-opacity=".08"/>
+    </linearGradient>
+    <linearGradient id="aiAccent" x1="390" y1="130" x2="600" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="var(--palette-cyan)"/>
+      <stop offset="1" stop-color="var(--palette-violet)"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" rx="28" fill="var(--palette-night)"/>
+  <rect x="1" y="1" width="958" height="598" rx="27" stroke="var(--palette-line)" stroke-opacity=".7"/>
+  <rect width="214" height="600" rx="28" fill="var(--palette-panel)"/>
+  <path d="M214 1v598" stroke="var(--palette-line)"/>
+  <circle cx="43" cy="48" r="13" fill="url(#aiAccent)"/>
+  <path d="M40 43h6l-4 5h5l-7 7 2-5h-5l3-7Z" fill="var(--palette-night)"/>
+  <rect x="68" y="39" width="96" height="7" rx="3.5" fill="var(--palette-text)" fill-opacity=".85"/>
+  <rect x="68" y="53" width="63" height="5" rx="2.5" fill="var(--palette-muted)" fill-opacity=".58"/>
+  <rect x="22" y="91" width="170" height="39" rx="9" fill="url(#aiGlow)"/>
+  <rect x="37" y="106" width="90" height="7" rx="3.5" fill="var(--palette-text)" fill-opacity=".8"/>
+  <circle cx="176" cy="110" r="4" fill="var(--palette-cyan)"/>
+  <rect x="37" y="151" width="89" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".62"/>
+  <rect x="37" y="178" width="106" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".62"/>
+  <rect x="37" y="205" width="79" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".62"/>
+  <rect x="22" y="532" width="34" height="34" rx="17" fill="var(--palette-violet)" fill-opacity=".18"/>
+  <rect x="69" y="539" width="88" height="6" rx="3" fill="var(--palette-text)" fill-opacity=".68"/>
+  <rect x="69" y="551" width="55" height="5" rx="2.5" fill="var(--palette-muted)" fill-opacity=".55"/>
+  <rect x="260" y="42" width="144" height="7" rx="3.5" fill="var(--palette-muted)" fill-opacity=".6"/>
+  <rect x="260" y="67" width="360" height="22" rx="6" fill="var(--palette-text)" fill-opacity=".92"/>
+  <rect x="830" y="45" width="82" height="28" rx="14" fill="url(#aiGlow)"/>
+  <rect x="848" y="57" width="47" height="5" rx="2.5" fill="var(--palette-cyan)"/>
+  <rect x="260" y="128" width="652" height="126" rx="14" fill="var(--palette-panel)"/>
+  <circle cx="292" cy="164" r="13" fill="var(--palette-cyan)" fill-opacity=".16"/>
+  <path d="M286 164h12M292 158v12" stroke="var(--palette-cyan)" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="317" y="151" width="153" height="6" rx="3" fill="var(--palette-cyan)" fill-opacity=".85"/>
+  <rect x="286" y="190" width="540" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".7"/>
+  <rect x="286" y="207" width="495" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".52"/>
+  <rect x="260" y="282" width="652" height="111" rx="14" fill="url(#aiGlow)"/>
+  <rect x="286" y="307" width="114" height="6" rx="3" fill="var(--palette-violet)"/>
+  <rect x="286" y="332" width="560" height="6" rx="3" fill="var(--palette-text)" fill-opacity=".78"/>
+  <rect x="286" y="350" width="516" height="6" rx="3" fill="var(--palette-text)" fill-opacity=".56"/>
+  <rect x="286" y="368" width="184" height="6" rx="3" fill="var(--palette-text)" fill-opacity=".38"/>
+  <rect x="260" y="421" width="652" height="75" rx="14" fill="var(--palette-panel)" stroke="var(--palette-line)"/>
+  <rect x="283" y="447" width="296" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".52"/>
+  <circle cx="875" cy="458" r="18" fill="url(#aiAccent)"/>
+  <path d="m871 458 3 3 6-7" stroke="var(--palette-night)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" fill="none">
+  <style>
+    :root {
+      --palette-night: #080b14;
+      --palette-panel: #11182a;
+      --palette-text: #f2f5ff;
+      --palette-muted: #9da8c2;
+      --palette-cyan: #62e5f2;
+      --palette-violet: #b89cff;
+      --palette-line: #28314b;
+    }
+  </style>
+  <defs>
+    <linearGradient id="commerceGlow" x1="130" y1="90" x2="820" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="var(--palette-violet)" stop-opacity=".2"/>
+      <stop offset="1" stop-color="var(--palette-cyan)" stop-opacity=".08"/>
+    </linearGradient>
+    <linearGradient id="commerceProduct" x1="340" y1="170" x2="590" y2="475" gradientUnits="userSpaceOnUse">
+      <stop stop-color="var(--palette-violet)"/>
+      <stop offset="1" stop-color="var(--palette-cyan)" stop-opacity=".75"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" rx="28" fill="var(--palette-night)"/>
+  <rect x="1" y="1" width="958" height="598" rx="27" stroke="var(--palette-line)" stroke-opacity=".7"/>
+  <path d="M48 101h864M48 146h864" stroke="var(--palette-line)"/>
+  <circle cx="75" cy="72" r="14" fill="url(#commerceProduct)"/>
+  <path d="M68 72h14M75 65v14" stroke="var(--palette-night)" stroke-width="2"/>
+  <rect x="101" y="64" width="96" height="7" rx="3.5" fill="var(--palette-text)" fill-opacity=".86"/>
+  <rect x="101" y="78" width="54" height="5" rx="2.5" fill="var(--palette-muted)" fill-opacity=".56"/>
+  <rect x="460" y="71" width="52" height="5" rx="2.5" fill="var(--palette-muted)"/>
+  <rect x="546" y="71" width="64" height="5" rx="2.5" fill="var(--palette-muted)"/>
+  <rect x="644" y="71" width="48" height="5" rx="2.5" fill="var(--palette-muted)"/>
+  <circle cx="871" cy="72" r="14" fill="var(--palette-panel)"/>
+  <path d="M866 69h10l-1 8h-8l-1-8Zm2-3a3 3 0 0 1 6 0" stroke="var(--palette-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="55" y="174" width="400" height="349" rx="18" fill="url(#commerceGlow)"/>
+  <circle cx="253" cy="343" r="125" fill="var(--palette-violet)" fill-opacity=".12"/>
+  <path d="M151 285c0-21 17-38 38-38h124c21 0 38 17 38 38v137H151V285Z" fill="url(#commerceProduct)" fill-opacity=".86"/>
+  <path d="M187 275v-16c0-37 30-67 67-67s67 30 67 67v16" stroke="var(--palette-text)" stroke-opacity=".78" stroke-width="8" stroke-linecap="round"/>
+  <path d="M173 308h156" stroke="var(--palette-text)" stroke-opacity=".25"/>
+  <rect x="496" y="202" width="140" height="6" rx="3" fill="var(--palette-cyan)" fill-opacity=".88"/>
+  <rect x="496" y="230" width="350" height="19" rx="5" fill="var(--palette-text)" fill-opacity=".92"/>
+  <rect x="496" y="262" width="318" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".67"/>
+  <rect x="496" y="279" width="294" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".48"/>
+  <rect x="496" y="321" width="152" height="22" rx="6" fill="var(--palette-panel)" stroke="var(--palette-line)"/>
+  <rect x="512" y="330" width="55" height="5" rx="2.5" fill="var(--palette-muted)"/>
+  <rect x="496" y="370" width="117" height="6" rx="3" fill="var(--palette-muted)" fill-opacity=".62"/>
+  <rect x="496" y="390" width="113" height="21" rx="6" fill="var(--palette-text)" fill-opacity=".9"/>
+  <rect x="496" y="438" width="172" height="44" rx="10" fill="url(#commerceProduct)"/>
+  <rect x="529" y="457" width="103" height="6" rx="3" fill="var(--palette-night)"/>
+  <circle cx="801" cy="469" r="18" fill="var(--palette-panel)" stroke="var(--palette-line)"/>
+  <path d="M796 469h10m-5-5v10" stroke="var(--palette-cyan)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

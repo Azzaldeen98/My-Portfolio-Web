@@ -1,0 +1,123 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "Home": {
+    "hero": {
+      "greeting": "Hello, I'm",
+      "name": "Azzaldeen Alqashaey",
+      "role": "Software & Mobile Engineer",
+      "introduction": "Building thoughtful digital products; from robust backends to seamless web and mobile experiences.",
+      "availability": "Available for collaboration",
+      "projectsCta": "Explore Works",
+      "contactCta": "Get in Touch",
+      "downloadCta": "Resume",
+      "scrollLabel": "Scroll to explore",
+      "visualCaption": "CodProSoft · Digital Engineering",
+      "engineeringLabel": "Software Engineering with Clarity",
+      "focusLabel": "AI · Web · Mobile",
+      "orbitFullStack": "Full-Stack",
+      "orbitAi": "AI Engineer",
+      "orbitMobile": "Mobile Apps",
+      "portraitAlt": "Developer portrait.",
+      "portraitLabel": "Portrait"
+    },
+    "about": {
+      "eyebrow": "About Me",
+      "title": "Turning complex ideas into reliable, simple products.",
+      "description": "A software engineer focused on building integrated systems, mobile applications, and practical AI-driven solutions, combining robust code architecture with product vision.",
+      "expertiseLabel": "Tech Stack",
+      "experienceLabel": "Years Experience",
+      "projectsCompletedLabel": "Completed Projects",
+      "webExpertise": "Scalable Web Systems",
+      "mobileExpertise": "Cross-Platform Apps",
+      "aiExpertise": "AI & RAG Integration"
+    },
+    "projects": {
+      "eyebrow": "Portfolio",
+      "title": "Projects turned into digital reality.",
+      "description": "Selected works highlighting the quality and efficiency of web, mobile, and AI solutions I've engineered.",
+      "conceptLabel": "Concept",
+      "projectCta": "Discuss Project",
+      "demoLabel": "Live Demo",
+      "githubLabel": "Source",
+      "allLabel": "All",
+      "filterLabel": "Filter Projects",
+      "emptyLabel": "No projects available in this category yet.",
+      "galleryButton": "Gallery",
+      "galleryTitle": "{title} Gallery",
+      "galleryCounter": "{current} of {total}",
+      "galleryPrevious": "Previous",
+      "galleryNext": "Next",
+      "galleryClose": "Close",
+      "ai": {
+        "title": "Smart Knowledge Hub",
+        "description": "An intelligent system delivering accurate answers backed by verified source documents.",
+        "imageAlt": "Smart Knowledge Hub interface preview."
+      },
+      "commerce": {
+        "title": "Digital Commerce Platform",
+        "description": "A seamless shopping experience combining smooth product discovery with maintainable backends.",
+        "imageAlt": "Digital Commerce platform interface preview."
+      },
+      "mobile": {
+        "title": "Mobile Services Suite",
+        "description": "A practical cross-platform application featuring responsive UI and high performance.",
+        "imageAlt": "Mobile services suite interface preview."
+      }
+    },
+    "skills": {
+      "eyebrow": "Skills & Tech",
+      "title": "Engineering tools for every challenge.",
+      "description": "A versatile stack for building end-to-end systems, from backend APIs and mobile apps to AI pipelines.",
+      "categoriesLabel": "Categories",
+      "proficiencyLabel": "Proficiency",
+      "emptyLabel": "Skills will appear soon.",
+      "categories": {
+        "backend": { "label": "Backend" },
+        "mobile": { "label": "Mobile" },
+        "ai": { "label": "Artificial Intelligence" },
+        "data": { "label": "Data & APIs" }
+      }
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "From concept to finished product.",
+      "web": {
+        "title": "Web & Backend Development",
+        "description": "Building secure, scalable web applications and APIs using Laravel, Django, and .NET."
+      },
+      "mobile": {
+        "title": "Mobile App Development",
+        "description": "High-performance custom Flutter applications with seamless cloud service integration."
+      },
+      "ai": {
+        "title": "AI Solutions & RAG",
+        "description": "Integrating LLMs and RAG workflows to boost productivity and system intelligence."
+      }
+    },
+    "experience": {
+      "eyebrow": "Experience",
+      "title": "Milestones of impact.",
+      "currentLabel": "Present",
+      "emptyLabel": "Experience details will appear soon."
+    },
+    "education": {
+      "eyebrow": "Education",
+      "title": "Academic background.",
+      "gradeLabel": "Grade",
+      "emptyLabel": "Education details will appear soon."
+    },
+    "social": {
+      "label": "Connect Online"
+    }
+  }
+}
