@@ -49,6 +49,15 @@ export function ProjectCard({
             {project.title.slice(0, 1)}
           </div>
         )}
+
+        {images.length > 0 ? (
+          <div className="project-gallery-overlay">
+            <ProjectGallery
+              images={images}
+              projectTitle={project.title}
+            />
+          </div>
+        ) : null}
       </div>
       <div className="project-card-content">
         <h3>{project.title}</h3>
@@ -58,13 +67,7 @@ export function ProjectCard({
             <li key={technology}>{technology}</li>
           ))}
         </ul>
-        <div className="project-card-actions">
-          {images.length > 0 ? (
-            <ProjectGallery
-              images={images}
-              projectTitle={project.title}
-            />
-          ) : null}
+        <div className="project-card-actions mt-4">
           {project.demoUrl ? (
             <a className="project-link" href={project.demoUrl} target="_blank" rel="noreferrer">
               <span>{demoLabel}</span>
@@ -77,12 +80,12 @@ export function ProjectCard({
               <ArrowUpRight aria-hidden="true" size={16} />
             </a>
           ) : null}
-          {!project.demoUrl && !project.githubUrl ? (
+          {/* {!project.demoUrl && !project.githubUrl ? (
             <Link href="/contact" className="project-link">
               <span>{projectCta}</span>
               <ArrowUpRight aria-hidden="true" size={16} />
             </Link>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </motion.article>

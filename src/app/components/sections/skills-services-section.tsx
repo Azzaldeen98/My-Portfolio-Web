@@ -1,5 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
-import type { LocalizedService, SkillRow } from '@/app/core/domain/types';
+import type { LocalizedService, LocalizedSkill } from '@/app/core/domain/types';
 import { Reveal } from './reveal';
 import { SkillExplorer } from './skill-explorer';
 import { getPortfolioIcon } from './portfolio-icon';
@@ -8,10 +8,11 @@ interface SkillsServicesSectionProps {
   eyebrow: string;
   title: string;
   description: string;
-  skills: SkillRow[];
+  skills: LocalizedSkill[];
   categoriesLabel: string;
   proficiencyLabel: string;
   emptySkillsLabel: string;
+  uncategorizedLabel: string;
   categoryLabels: Readonly<Record<string, string>>;
   servicesEyebrow: string;
   servicesTitle: string;
@@ -26,6 +27,7 @@ export function SkillsServicesSection({
   categoriesLabel,
   proficiencyLabel,
   emptySkillsLabel,
+  uncategorizedLabel,
   categoryLabels,
   servicesEyebrow,
   servicesTitle,
@@ -49,6 +51,7 @@ export function SkillsServicesSection({
             categoriesLabel={categoriesLabel}
             proficiencyLabel={proficiencyLabel}
             emptyLabel={emptySkillsLabel}
+            uncategorizedLabel={uncategorizedLabel}
             categoryLabels={categoryLabels}
           />
         </Reveal>

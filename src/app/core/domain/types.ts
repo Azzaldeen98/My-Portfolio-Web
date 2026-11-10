@@ -86,14 +86,44 @@ export interface ExperienceRow {
   created_at: string;
 }
 
+export interface SkillCategoryRow {
+  id: string;
+  name_ar: string;
+  name_en: string;
+  slug: string;
+  sort_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
 export interface SkillRow {
   id: string;
   name: string;
-  category: string;
+  skill_category_id: string | null;
   icon_name: string | null;
   proficiency: number;
   sort_order: number;
   created_at: string;
+}
+
+export interface SkillRowWithCategoryId {
+  id: string;
+  name: string;
+  category_id: string | null;
+  icon_name: string | null;
+  proficiency: number;
+  sort_order: number;
+  created_at: string;
+}
+
+export interface LocalizedSkill {
+  id: string;
+  name: string;
+  categoryId: string | null;
+  categoryName: string | null;
+  icon_name: string | null;
+  proficiency: number;
+  sort_order: number;
 }
 
 export interface ServiceRow {
@@ -194,7 +224,7 @@ export interface HomepageData {
   projects: LocalizedProject[];
   education: LocalizedEducation[];
   experiences: LocalizedExperience[];
-  skills: SkillRow[];
+  skills: LocalizedSkill[];
   services: LocalizedService[];
   socialLinks: SocialLinkRow[];
 }
@@ -215,6 +245,7 @@ export interface Database {
       project_images: TableDefinition<ProjectImageRow>;
       education: TableDefinition<EducationRow>;
       experiences: TableDefinition<ExperienceRow>;
+      skill_categories: TableDefinition<SkillCategoryRow>;
       skills: TableDefinition<SkillRow>;
       services: TableDefinition<ServiceRow>;
       social_links: TableDefinition<SocialLinkRow>;

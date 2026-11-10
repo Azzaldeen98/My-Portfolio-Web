@@ -102,6 +102,7 @@ export default async function HomePage({ params }: HomePageProps) {
         categoriesLabel={t('skills.categoriesLabel')}
         proficiencyLabel={t('skills.proficiencyLabel')}
         emptySkillsLabel={t('skills.emptyLabel')}
+        uncategorizedLabel={t('skills.uncategorizedLabel')}
         categoryLabels={{
           backend: t('skills.categories.backend.label'),
           mobile: t('skills.categories.mobile.label'),

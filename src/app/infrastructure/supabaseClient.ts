@@ -8,6 +8,7 @@ import type {
   ExperienceRow,
   HomepageData,
   Locale,
+  LocalizedSkill,
   LocalizedCategory,
   LocalizedEducation,
   LocalizedExperience,
@@ -19,7 +20,9 @@ import type {
   ProfileRow,
   ProjectRow,
   ServiceRow,
+  SkillCategoryRow,
   SkillRow,
+  SkillRowWithCategoryId,
   SocialLinkRow,
 } from '@/app/core/domain/types';
 
@@ -60,6 +63,41 @@ function localizedValue(
   englishValue: string,
 ): string {
   return locale === 'ar' ? arabicValue : englishValue;
+}
+
+function isSkillRowWithCategoryId(value: unknown): value is SkillRowWithCategoryId {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  const row = value as Record<string, unknown>;
+  return (
+    typeof row.id === 'string' &&
+    typeof row.name === 'string' &&
+    (typeof row.category_id === 'string' || row.category_id === null) &&
+    (typeof row.icon_name === 'string' || row.icon_name === null) &&
+    typeof row.proficiency === 'number' &&
+    typeof row.sort_order === 'number' &&
+    typeof row.created_at === 'string'
+  );
+}
+
+function normalizeSkillRowsWithCategoryId(data: unknown): SkillRow[] {
+  if (!Array.isArray(data) || !data.every(isSkillRowWithCategoryId)) {
+    throw new Error('Supabase returned skills with an unexpected category_id row shape.');
+  }
+
+  return data.map(({ category_id, ...skill }) => ({
+    ...skill,
+    skill_category_id: category_id,
+  }));
+}
+
+function isMissingSkillCategoryColumn(error: { code: string; message: string }): boolean {
+  return (
+    (error.code === '42703' || error.code === 'PGRST204') &&
+    error.message.includes('skill_category_id')
+  );
 }
 
 export async function getProfile(locale: Locale): Promise<LocalizedProfile | null> {
@@ -221,17 +259,64 @@ export async function getExperiences(locale: Locale): Promise<LocalizedExperienc
   }));
 }
 
-export async function getSkills(): Promise<SkillRow[]> {
-  const { data, error } = await getSupabaseClient()
-    .from('skills')
-    .select('id,name,category,icon_name,proficiency,sort_order,created_at')
-    .order('sort_order', { ascending: true });
+export async function getSkills(locale: Locale): Promise<LocalizedSkill[]> {
+  const supabase = getSupabaseClient();
+  const [
+    { data: categoryData, error: categoryError },
+    { data: skillData, error: skillError },
+  ] = await Promise.all([
+    supabase
+      .from('skill_categories')
+      .select('id,name_ar,name_en,slug,sort_order,is_active,created_at')
+      .order('sort_order', { ascending: true }),
+    supabase
+      .from('skills')
+      .select('id,name,skill_category_id,icon_name,proficiency,sort_order,created_at')
+      .order('sort_order', { ascending: true }),
+  ]);
 
-  if (error) {
-    throwQueryError('skills', error.message);
+  if (categoryError) {
+    throwQueryError('skill categories', categoryError.message);
   }
 
-  return (data ?? []) satisfies SkillRow[];
+  let skills: SkillRow[];
+  if (skillError) {
+    if (!isMissingSkillCategoryColumn(skillError)) {
+      throwQueryError('skills', skillError.message);
+    }
+
+    const { data: alternateSkillData, error: alternateSkillError } = await supabase
+      .from('skills')
+      .select('id,name,category_id,icon_name,proficiency,sort_order,created_at')
+      .order('sort_order', { ascending: true });
+
+    if (alternateSkillError) {
+      throwQueryError('skills', alternateSkillError.message);
+    }
+
+    skills = normalizeSkillRowsWithCategoryId(alternateSkillData);
+  } else {
+    skills = (skillData ?? []) satisfies SkillRow[];
+  }
+
+  const categoryNames = new Map(
+    ((categoryData ?? []) satisfies SkillCategoryRow[]).map((category) => [
+      category.id,
+      localizedValue(locale, category.name_ar, category.name_en),
+    ]),
+  );
+
+  return skills.map((skill) => ({
+    id: skill.id,
+    name: skill.name,
+    categoryId: skill.skill_category_id,
+    categoryName: skill.skill_category_id
+      ? categoryNames.get(skill.skill_category_id) ?? null
+      : null,
+    icon_name: skill.icon_name,
+    proficiency: skill.proficiency,
+    sort_order: skill.sort_order,
+  }));
 }
 
 export async function getServices(locale: Locale): Promise<LocalizedService[]> {
@@ -282,7 +367,7 @@ export async function getHomepageData(locale: Locale): Promise<HomepageData> {
     getProjects(locale),
     getEducation(locale),
     getExperiences(locale),
-    getSkills(),
+    getSkills(locale),
     getServices(locale),
     getSocialLinks(),
   ]);

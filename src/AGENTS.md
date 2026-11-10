@@ -1,9 +1,12 @@
+<!-- BEGIN:nextjs-agent-rules -->
+
+> 🚨 **CRITICAL SYSTEM RULE:** DO NOT MODIFY, OVERWRITE, OR DELETE THIS FILE (`AGENTS.md`) UNDER ANY CIRCUMSTANCES. IT IS THE PROTECTED SOURCE OF TRUTH.
+
 # AI Coding Standards & Project Architecture Guidelines
 
-> **CRITICAL INSTRUCTION FOR AI AGENTS:**  
+> **CRITICAL INSTRUCTION FOR AI AGENTS:**  
 > Read and process this document thoroughly before generating, refactoring, or editing any code in this repository. Strict adherence to these principles, architecture rules, and styling constraints is mandatory.
 
----
 
 ## 1. AI Agent Role & Core Scope
 
@@ -36,20 +39,20 @@ You are acting as a **Senior Full-Stack Engineer & Software Architect** speciali
 ## 4. Styling & Color System Rules (STRICT)
 - **NO Hardcoded Utility Colors:** NEVER use direct color classes such as `text-gray-600`, `dark:text-gray-300`, `bg-blue-500`, or `dark:bg-slate-900`.
 - **Semantic Tokens Usage:** Always use the defined semantic design tokens from `globals.css`:
-  - **Backgrounds:** `bg-app` (Base background), `bg-surface` (Cards/Sections), `bg-brand-subtle` (Accent background), `hover:bg-surface-hover`, `bg-surface-active`.
-  - **Text Colors:** `text-content-main` (Headings/Primary text), `text-content-muted` (Descriptions/Body text), `text-content-subtle` (Dates/Captions), `text-primary` (Active/Brand links).
-  - **Borders:** `border-border-main`.
+  - **Backgrounds:** `bg-app` (Base background), `bg-surface` (Cards/Sections), `bg-brand-subtle` (Accent background), `hover:bg-surface-hover`, `bg-surface-active`.
+  - **Text Colors:** `text-content-main` (Headings/Primary text), `text-content-muted` (Descriptions/Body text), `text-content-subtle` (Dates/Captions), `text-primary` (Active/Brand links).
+  - **Borders:** `border-border-main`.
 - **Hover & Active States Behavior:**
-  - Standard interactive links/buttons MUST use `hover:text-primary-hover` or `hover:bg-surface-hover`.
-  - Active links (`isActive === true`) MUST maintain stable `text-primary` or `bg-surface-active` without changing text color on hover to preserve visual anchor and UX clarity.
+  - Standard interactive links/buttons MUST use `hover:text-primary-hover` or `hover:bg-surface-hover`.
+  - Active links (`isActive === true`) MUST maintain stable `text-primary` or `bg-surface-active` without changing text color on hover to preserve visual anchor and UX clarity.
 
 ---
 
 ## 5. React Server Components (RSC) & Localization Rules
 - **Server Components First:** All components are React Server Components (RSC) by default. Do NOT add `'use client';` unless explicitly required for interactivity, browser APIs, or React Hooks (`useState`, `usePathname`, etc.).
 - **Localization Handling:**
-  - In **Server Components**, use `getTranslations({ locale, namespace })` from `next-intl/server`.
-  - In **Client Components**, use `useTranslations(namespace)` from `next-intl`.
+  - In **Server Components**, use `getTranslations({ locale, namespace })` from `next-intl/server`.
+  - In **Client Components**, use `useTranslations(namespace)` from `next-intl`.
 - **Next.js Images:** Always use `<Image />` from `next/image` with explicit `width`, `height`, or `fill` props alongside proper `alt` accessibility tags.
 
 ---
@@ -76,17 +79,15 @@ All generated code MUST follow SOLID principles:
 ## 8. Code Quality Examples (Do's & Don'ts)
 
 - ❌ **BAD (Hardcoded colors & untyped code):**
-  ```tsx
-  export default function Card({ title, desc }: any) {
-    return (
-      <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-4">
-        <h3>{title}</h3>
-        <p className="text-gray-500">{desc}</p>
-      </div>
-    );
-  }
-
-  ---
+  ```tsx
+  export default function Card({ title, desc }: any) {
+    return (
+      <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-4">
+        <h3>{title}</h3>
+        <p className="text-gray-500">{desc}</p>
+      </div>
+    );
+  }
 
 ## 9. Database Schema & Supabase Architecture (Metadata Reference)
 
@@ -133,36 +134,57 @@ All data fetching operations, Server Actions, and TypeScript interfaces MUST str
 - `description_ar` (TEXT, Nullable) / `description_en` (TEXT, Nullable)
 - `sort_order` (INT)
 
-### 5. `skills` (Technical Skills & Proficiency)
+
+### 5. 'skill_categories` 
+   - `id` (UUID, PK)
+   - `name_ar` (VARCHAR)
+   - `name_en` (VARCHAR) 
+   - `slug` (VARCHAR,UNIQUE ) 
+   - `sort_order`(INT, DEFAULT 0)  
+   - `is_active` (BOOLEAN, DEFAULT TRUE) 
+   - `created_at` (TIMESTAMPTZ, DEFAULT NOW())
+
+### 6. `skills` (Technical Skills & Proficiency)
 - `id` (UUID, PK)
 - `name` (VARCHAR)
-- `category` (VARCHAR)
+- `skill_category_id` (UUID, FK -> `skill_categories.id`, ON DELETE SET NULL)
 - `icon_name` (VARCHAR, Nullable) — Lucide icon name
 - `proficiency` (INT, Default 80)
 - `sort_order` (INT)
 
-### 6. `services` (Engineering & Tech Services)
+
+### 7. `services` (Engineering & Tech Services)
 - `id` (UUID, PK)
 - `title_ar` (VARCHAR) / `title_en` (VARCHAR)
 - `description_ar` (TEXT) / `description_en` (TEXT)
 - `icon_name` (VARCHAR, Nullable)
 - `sort_order` (INT)
 
-### 7. `social_links` (Contact & Social Media Links)
+### 8. `social_links` (Contact & Social Media Links)
 - `id` (UUID, PK)
 - `platform_name` (VARCHAR)
 - `icon_name` (VARCHAR) — Lucide icon name (e.g., 'Mail', 'Linkedin', 'Github', 'MessageCircle')
 - `url` (TEXT)
 - `sort_order` (INT)
 
-### 8. `experiences` (Professional Experience & Career Timeline)
+### 9. `experiences` (Professional Experience & Career Timeline)
 - `id` (UUID, PK)
 - `title_ar` (VARCHAR) / `title_en` (VARCHAR) — Job title (e.g., Senior Full-Stack Developer)
 - `company_ar` (VARCHAR) / `company_en` (VARCHAR) — Company name or Freelance
 - `location_ar` (VARCHAR, Nullable) / `location_en` (VARCHAR, Nullable) — Location / Remote
-- `start_date` (VARCHAR) — Start date (e.g., Jan 2023)
+- `start_date` (VARCHAR) — Start date (e.g., Jan 2021)
 - `end_date` (VARCHAR, Nullable) — End date or Present
 - `is_current` (BOOLEAN) — Current job flag
 - `description_ar` (TEXT) / `description_en` (TEXT) — Responsibilities and achievements
 - `technologies` (TEXT[]) — Tools and frameworks used
 - `sort_order` (INT)
+
+### 10. `project_images` (Project Images & UI Gallery)
+- `id` (UUID, PK)
+- `project_id` (UUID, FK -> projects.id, ON DELETE CASCADE) — Associated project reference 
+- `image_url` (TEXT) — Image path or URL in Supabase Storage 
+- `caption_ar` (VARCHAR, Nullable) / `caption_en` (VARCHAR, Nullable) — Optional descriptive caption in Arabic and English 
+`sort_order` (INT) — Control display order of images in the gallery 
+
+
+<!-- END:nextjs-agent-rules -->

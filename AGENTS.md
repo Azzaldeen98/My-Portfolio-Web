@@ -110,6 +110,7 @@ All data fetching operations, Server Actions, and TypeScript interfaces MUST str
 - `slug` (VARCHAR, UNIQUE)
 - `name_ar` (VARCHAR) / `name_en` (VARCHAR)
 - `sort_order` (INT)
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
 ### 3. `projects` (Portfolio Projects)
 - `id` (UUID, PK)
@@ -122,6 +123,7 @@ All data fetching operations, Server Actions, and TypeScript interfaces MUST str
 - `category_id` (UUID, FK -> `categories.id`, ON DELETE SET NULL)
 - `is_featured` (BOOLEAN)
 - `sort_order` (INT)
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
 ### 4. `education` (Academic Background & Degrees)
 - `id` (UUID, PK)
@@ -133,30 +135,44 @@ All data fetching operations, Server Actions, and TypeScript interfaces MUST str
 - `end_year` (VARCHAR)
 - `description_ar` (TEXT, Nullable) / `description_en` (TEXT, Nullable)
 - `sort_order` (INT)
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
-### 5. `skills` (Technical Skills & Proficiency)
-- `id` (UUID, PK)
-- `name` (VARCHAR)
-- `category` (VARCHAR)
-- `icon_name` (VARCHAR, Nullable) — Lucide icon name
-- `proficiency` (INT, Default 80)
-- `sort_order` (INT)
+### 5. 'skill_categories` 
+   - `id` (UUID, PK)
+   - `name_ar` (VARCHAR)
+   - `name_en` (VARCHAR) 
+   - `slug` (VARCHAR,UNIQUE ) 
+   - `sort_order`(INT, DEFAULT 0)  
+   - `is_active` (BOOLEAN, DEFAULT TRUE) 
+   - `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
-### 6. `services` (Engineering & Tech Services)
+### 6. `skills` (Technical Skills & Proficiency)
+   - `id` (UUID, PK)
+   - `name` (VARCHAR)
+   - `skill_category_id` (UUID, FK -> `skill_categories.id`, ON DELETE SET NULL)
+   - `icon_name` (VARCHAR, Nullable) — Lucide icon name
+   - `proficiency` (INT, Default 80)
+   - `sort_order` (INT)
+   - `created_at` (TIMESTAMPTZ, DEFAULT NOW())
+
+
+### 7. `services` (Engineering & Tech Services)
 - `id` (UUID, PK)
 - `title_ar` (VARCHAR) / `title_en` (VARCHAR)
 - `description_ar` (TEXT) / `description_en` (TEXT)
 - `icon_name` (VARCHAR, Nullable)
 - `sort_order` (INT)
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
-### 7. `social_links` (Contact & Social Media Links)
+### 8. `social_links` (Contact & Social Media Links)
 - `id` (UUID, PK)
 - `platform_name` (VARCHAR)
 - `icon_name` (VARCHAR) — Lucide icon name (e.g., 'Mail', 'Linkedin', 'Github', 'MessageCircle')
 - `url` (TEXT)
 - `sort_order` (INT)
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
-### 8. `experiences` (Professional Experience & Career Timeline)
+### 9. `experiences` (Professional Experience & Career Timeline)
 - `id` (UUID, PK)
 - `title_ar` (VARCHAR) / `title_en` (VARCHAR) — Job title (e.g., Senior Full-Stack Developer)
 - `company_ar` (VARCHAR) / `company_en` (VARCHAR) — Company name or Freelance
@@ -167,12 +183,15 @@ All data fetching operations, Server Actions, and TypeScript interfaces MUST str
 - `description_ar` (TEXT) / `description_en` (TEXT) — Responsibilities and achievements
 - `technologies` (TEXT[]) — Tools and frameworks used
 - `sort_order` (INT)
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
 
-### 9. `project_images` (Project Images & UI Gallery)
+### 10. `project_images` (Project Images & UI Gallery)
 - `id` (UUID, PK)
 - `project_id` (UUID, FK -> projects.id, ON DELETE CASCADE) — Associated project reference 
 - `image_url` (TEXT) — Image path or URL in Supabase Storage 
 - `caption_ar` (VARCHAR, Nullable) / `caption_en` (VARCHAR, Nullable) — Optional descriptive caption in Arabic and English 
 `sort_order` (INT) — Control display order of images in the gallery 
+- `created_at` (TIMESTAMPTZ, DEFAULT NOW())
+
 
 <!-- END:nextjs-agent-rules -->

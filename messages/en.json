@@ -81,6 +81,7 @@
       "categoriesLabel": "Categories",
       "proficiencyLabel": "Proficiency",
       "emptyLabel": "Skills will appear soon.",
+      "uncategorizedLabel": "Other",
       "categories": {
         "backend": { "label": "Backend" },
         "mobile": { "label": "Mobile" },

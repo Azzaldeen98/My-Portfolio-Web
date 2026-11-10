@@ -2,14 +2,15 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { createElement, useState } from 'react';
-import type { SkillRow } from '@/app/core/domain/types';
+import type { LocalizedSkill } from '@/app/core/domain/types';
 import { getPortfolioIcon } from './portfolio-icon';
 
 interface SkillExplorerProps {
-  skills: SkillRow[];
+  skills: LocalizedSkill[];
   categoriesLabel: string;
   proficiencyLabel: string;
   emptyLabel: string;
+  uncategorizedLabel: string;
   categoryLabels: Readonly<Record<string, string>>;
 }
 
@@ -18,11 +19,20 @@ export function SkillExplorer({
   categoriesLabel,
   proficiencyLabel,
   emptyLabel,
+  uncategorizedLabel,
   categoryLabels,
 }: SkillExplorerProps) {
-  const categories = [...new Set(skills.map((skill) => skill.category))];
-  const [activeCategory, setActiveCategory] = useState(categories[0] ?? '');
-  const currentSkills = skills.filter((skill) => skill.category === activeCategory);
+  const categories = [...new Set(skills.map((skill) => skill.categoryId))];
+  const categoryNames = new Map<string, string>();
+  for (const skill of skills) {
+    if (skill.categoryId !== null && skill.categoryName !== null) {
+      categoryNames.set(skill.categoryId, skill.categoryName);
+    }
+  }
+  const [activeCategory, setActiveCategory] = useState<string | null>(categories[0] ?? null);
+  const currentSkills = skills.filter(
+    (skill) => skill.categoryId === activeCategory,
+  );
   const categoryIcon = getPortfolioIcon(currentSkills[0]?.icon_name ?? null);
 
   if (skills.length === 0) {
@@ -34,13 +44,17 @@ export function SkillExplorer({
       <div className="skill-tabs" role="group" aria-label={categoriesLabel}>
         {categories.map((category) => (
           <button
-            key={category}
+            key={category ?? 'uncategorized'}
             className={`skill-tab${activeCategory === category ? ' is-active' : ''}`}
             type="button"
             aria-pressed={activeCategory === category}
             onClick={() => setActiveCategory(category)}
           >
-            {categoryLabels[category.toLowerCase()] ?? category}
+            {category === null
+              ? uncategorizedLabel
+              : categoryLabels[(categoryNames.get(category) ?? '').toLowerCase()] ??
+                categoryNames.get(category) ??
+                uncategorizedLabel}
           </button>
         ))}
       </div>
@@ -52,7 +66,7 @@ export function SkillExplorer({
         <AnimatePresence mode="wait" initial={false}>
           <motion.ul
             className="skill-list skill-list-progress"
-            key={activeCategory}
+            key={activeCategory ?? 'uncategorized'}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}

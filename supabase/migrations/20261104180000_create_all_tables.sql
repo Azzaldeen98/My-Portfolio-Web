@@ -47,11 +47,22 @@ CREATE TABLE project_images (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 3. جدول المهارات والتقنيات (Skills)
+-- 3. فئات المهارات
+CREATE TABLE public.skill_categories (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    name_ar VARCHAR(100) NOT NULL,
+    name_en VARCHAR(100) NOT NULL,
+    slug VARCHAR(100) UNIQUE NOT NULL,
+    sort_order INT DEFAULT 0,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- 4. جدول المهارات والتقنيات (Skills)
 CREATE TABLE public.skills (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    category VARCHAR(50) NOT NULL, 
+    skill_category_id UUID REFERENCES public.skill_categories(id) ON DELETE SET NULL,
     icon_name VARCHAR(100), 
     proficiency INT DEFAULT 80, 
     sort_order INT DEFAULT 0,
@@ -139,6 +150,7 @@ CREATE TABLE public.experiences (
 -- تفعيل سياسات الأمان للقراءة العامة (Row Level Security - RLS) لكل الجداول
 ALTER TABLE public.categories ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.skill_categories ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.skills ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.profile ENABLE ROW LEVEL SECURITY;
@@ -149,6 +161,7 @@ ALTER TABLE public.experiences ENABLE ROW LEVEL SECURITY;
 -- إنشاء سياسات السماح بالقراءة العامة لجميع الزوار
 CREATE POLICY "Public Read Categories" ON public.categories FOR SELECT USING (true);
 CREATE POLICY "Public Read Projects" ON public.projects FOR SELECT USING (true);
+CREATE POLICY "Public Read Skill Categories" ON public.skill_categories FOR SELECT USING (true);
 CREATE POLICY "Public Read Skills" ON public.skills FOR SELECT USING (true);
 CREATE POLICY "Public Read Services" ON public.services FOR SELECT USING (true);
 CREATE POLICY "Public Read Profile" ON public.profile FOR SELECT USING (true);
