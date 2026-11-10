@@ -6,6 +6,12 @@
     "contact": "Contact"
   },
   "Footer": {
+    "brandDescription": "Software and mobile engineer turning ideas into thoughtful, reliable digital experiences.",
+    "navigationTitle": "Explore",
+    "connectTitle": "Have a project in mind?",
+    "contactDescription": "Let’s talk about your idea and take the first step toward bringing it to life.",
+    "contactAction": "Let’s talk",
+    "madeWithCare": "Built with care and attention to detail.",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"

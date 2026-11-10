@@ -19,10 +19,10 @@ export function Navbar() {
 
           <div className="flex items-center gap-3">
             <NavbarActions />
-            <NavbarMenuButton
+            {/* <NavbarMenuButton
               isOpen={isOpen}
               onToggle={() => setIsOpen((open) => !open)}
-            />
+            /> */}
           </div>
         </div>
 
