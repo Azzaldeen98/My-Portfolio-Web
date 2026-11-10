@@ -1,16 +1,25 @@
 {
+  "Name": "عزالدين",
   "Navbar": {
+    
     "home": "الرئيسية",
     "about": "عنّي",
     "services": "الخدمات",
     "contact": "تواصل"
   },
   "Footer": {
-    "brandDescription": "مهندس برمجيات وتطبيقات جوال، أعمل على تحويل الأفكار إلى تجارب رقمية عملية وموثوقة.",
+    "brandDescription": "مهندس برمجيات متكامل (ويب , جوال) ، يعمل على تحويل الأفكار إلى تجارب رقمية مدروسة وموثوقة.",
     "navigationTitle": "روابط سريعة",
+    "aboutLink": "نبذة عني",
+    "experienceLink": "الخبرة المهنية",
+    "educationLink": "التعليم",
+    "projectsLink": "المشاريع",
+    "skillsLink": "المهارات",
+    "servicesLink": "الخدمات",
     "connectTitle": "هل لديك فكرة أو مشروع؟",
     "contactDescription": "يسعدني أن نتحدث عن فكرتك ونخطو معاً نحو تنفيذها.",
     "contactAction": "لنتحدث",
+    "socialLinksTitle": "تابعني وتواصل معي",
     "madeWithCare": "صُنع بشغف واهتمام بالتفاصيل.",
     "rights": "جميع الحقوق محفوظة.",
     "privacy": "سياسة الخصوصية",

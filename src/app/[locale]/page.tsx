@@ -118,7 +118,7 @@ export default async function HomePage({ params }: HomePageProps) {
         servicesTitle={t('services.title')}
         services={data.services}
       />
-      <SocialLinksSection label={t('social.label')} links={data.socialLinks} />
+      {/* <SocialLinksSection label={t('social.label')} links={data.socialLinks} /> */}
     </div>
   );
 }

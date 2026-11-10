@@ -1,21 +1,27 @@
 // src/components/common/footer.tsx
 import { ArrowUpRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { getSocialLinks } from '@/app/infrastructure/supabaseClient';
+import { getPortfolioIcon } from '../sections/portfolio-icon';
 
 async function CurrentYear() {
   'use cache';
   return <>{new Date().getFullYear()}</>;
 }
 
-export function Footer() {
-  const t = useTranslations('Footer');
-  const nav = useTranslations('Navbar');
+export async function Footer() {
+  const [t, socialLinks] = await Promise.all([
+    getTranslations('Footer'),
+    getSocialLinks(),
+  ]);
   const links = [
-    { href: '/', label: nav('home') },
-    { href: '/about', label: nav('about') },
-    { href: '/services', label: nav('services') },
-    { href: '/contact', label: nav('contact') },
+    { href: '/#about', label: t('aboutLink') },
+    { href: '/#experience', label: t('experienceLink') },
+    { href: '/#education', label: t('educationLink') },
+    { href: '/#projects', label: t('projectsLink') },
+    { href: '/#skills', label: t('skillsLink') },
+    { href: '/#services', label: t('servicesLink') },
   ];
 
   return (
@@ -71,6 +77,32 @@ export function Footer() {
               {t('contactAction')}
               <ArrowUpRight aria-hidden="true" size={16} />
             </Link>
+            {socialLinks.length > 0 ? (
+              <nav className="mt-6" aria-label={t('socialLinksTitle')}>
+                <h3 className="text-sm font-semibold text-content-main">
+                  {t('socialLinksTitle')}
+                </h3>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {socialLinks.map((socialLink) => {
+                    const Icon = getPortfolioIcon(socialLink.icon_name);
+
+                    return (
+                      <li key={socialLink.id}>
+                        <a
+                          href={socialLink.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-border-main px-3 py-2 text-sm text-content-muted transition-colors hover:bg-surface-hover hover:text-primary-hover"
+                        >
+                          <Icon aria-hidden="true" size={16} />
+                          <span>{socialLink.platform_name}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            ) : null}
           </div>
         </div>
 
@@ -78,7 +110,7 @@ export function Footer() {
           <p>
             © <CurrentYear /> AzzaldeenTech. {t('rights')}
           </p>
-          <p>{t('madeWithCare')}</p>
+          {/* <p>{t('madeWithCare')}</p> */}
         </div>
       </div>
     </footer>

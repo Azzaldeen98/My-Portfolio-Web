@@ -1,4 +1,5 @@
 {
+  "Name": "Azzaldeen",
   "Navbar": {
     "home": "Home",
     "about": "About",
@@ -6,11 +7,18 @@
     "contact": "Contact"
   },
   "Footer": {
-    "brandDescription": "Software and mobile engineer turning ideas into thoughtful, reliable digital experiences.",
+    "brandDescription": "A full-stack software engineer (web, mobile) who transforms ideas into well-considered and reliable digital experiences.",
     "navigationTitle": "Explore",
+    "aboutLink": "About",
+    "experienceLink": "Experience",
+    "educationLink": "Education",
+    "projectsLink": "Projects",
+    "skillsLink": "Skills",
+    "servicesLink": "Services",
     "connectTitle": "Have a project in mind?",
     "contactDescription": "Let’s talk about your idea and take the first step toward bringing it to life.",
     "contactAction": "Let’s talk",
+    "socialLinksTitle": "Connect with me",
     "madeWithCare": "Built with care and attention to detail.",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
