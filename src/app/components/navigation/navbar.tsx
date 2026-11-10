@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <NavbarBrand />
 
-          <NavbarLinks mode="desktop" />
+          {/* <NavbarLinks mode="desktop" /> */}
 
           <div className="flex items-center gap-3">
             <NavbarActions />
