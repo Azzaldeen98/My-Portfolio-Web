@@ -26,7 +26,7 @@ export default async function HomePage({ params }: HomePageProps) {
   }
 
   const locale: Locale = routeLocale;
-  await connection();
+  // await connection();
   const [t, data] = await Promise.all([
     getTranslations({ locale, namespace: 'Home' }),
     getHomepageData(locale),
