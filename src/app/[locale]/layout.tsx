@@ -42,17 +42,18 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir} suppressHydrationWarning className="scroll-smooth dark">
       <body className="min-h-screen flex flex-col bg-app text-content-main antialiased transition-colors duration-200">
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider defaultTheme="system" enableSystem storageKey="base-web-theme">
-            <Navbar />
-            <main className="flex-1 flex flex-col overflow-x-hidden">
-              <Suspense fallback={null}>
+          <Suspense fallback={<div className="min-h-screen bg-app" />}>
+            <ThemeProvider defaultTheme="system" enableSystem storageKey="base-web-theme">
+              <Navbar />
+              <main className="flex-1 flex flex-col overflow-x-hidden">
                 <PageTransition>{children}</PageTransition>
-              </Suspense>
-            </main>
-            <Footer />
-          </ThemeProvider>
+              </main>
+              <Footer />
+            </ThemeProvider>
+          </Suspense>
         </NextIntlClientProvider>
       </body>
     </html>
   );
+
 }
