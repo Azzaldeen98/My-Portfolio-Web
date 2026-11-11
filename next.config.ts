@@ -7,7 +7,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   
   /* config options here */
-  output: 'export',
+  // output: 'export',
   cacheComponents: true,
   partialPrefetching: true,
   reactCompiler: true,
