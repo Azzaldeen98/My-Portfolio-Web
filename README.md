@@ -89,7 +89,7 @@ Data-fetching queries and TypeScript interface definitions must strictly match t
 
 Please draft the files and outline the implementation methodology step-by-step, ensuring the integrity of each code segment before proceeding to the next.
 
-
+   
 بناءً على المعايير الهندسية وقواعد التصميم الصارمة الواردة في ملف AGENTS.md (Next.js App Router, [locale] routing, strict TypeScript بدون أي استخدام لـ any، semantic design tokens، Clean Architecture)، مطلوب منك كتابة وتطوير كامل كود الصفحة الرئيسية (Body / Main Content Area) ومكوناتها المرتبطة بـ Supabase مع دعم كامل للغتين (العربية RTL والإنجليزية LTR).
 
 ⚠️ **قاعدة حرجة جداً أثناء التنفيذ (Step-by-Step Verification & Testing):**
